@@ -12,13 +12,15 @@ public class MyHashMap<K,V> implements Map<K,V> {
     private int threshold;
 
 
+    @SuppressWarnings({"rawtypes","unchecked"})
     public MyHashMap() {
-        table = new Bucket[DEFAULT_TABLE_SIZE];
+        table = (Bucket<K,V>[]) new Bucket[DEFAULT_TABLE_SIZE];
         threshold = (int) (DEFAULT_TABLE_SIZE * LOAD_FACTOR);
     }
 
     @Override
     public int size() {
+
         return size;
     }
 
@@ -184,44 +186,27 @@ public class MyHashMap<K,V> implements Map<K,V> {
         }
 
         private void findNextNotNullBucket() {
-            i++;
+
             for (; i < table.length && table[i] == null; i++) {
             }
-            if(i >= table.length){
-                i = table.length - 1;
-            }
-            current = table[i];
+            current = i< table.length ? table[i] : null;
+
         }
 
         @Override
         public boolean hasNext() {
-            return current != null;
+            return i < table.length && current != null;
         }
 
         @Override
         public Bucket<K,V> next() {
             Bucket<K, V> iter = current;
-//            if(iter == null){
-//                return null;
-//            }
-//            if(table[i++] == null){
-//                for (; i < table.length - 1 && table[i] == null; i++) {
-//                }
-//                current = table[i];
-//            }else{
-//                if(current.next == null){
-//                    i++;
-//                    for (; i < table.length - 1 && table[i] == null; i++) {
-//                    }
-//                    current = table[i];
-//                }else{
-//                    current = current.next;
-//                }
-//            }
             if(current.next != null){
                 current = current.next;
             }else{
+                i++;
                 findNextNotNullBucket();
+
             }
             return iter;
 
