@@ -1,4 +1,4 @@
-package ds.binaryTree;
+package ua.artcode.week1.binaryTree;
 
 public class BinaryTree<E extends Comparable> implements IBinaryTree<E> {
     private Node<E> root;

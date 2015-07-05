@@ -1,4 +1,4 @@
-package ds.hash;
+package ua.artcode.week1.hash;
 
 import java.util.*;
 
