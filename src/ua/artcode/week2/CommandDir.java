@@ -13,8 +13,8 @@ public class CommandDir implements ICommand {
         File file = new File(currentPath);
         File[] files = file.listFiles();
         for (int i = 0; i < files.length; i++) {
-            System.out.println(files[i].getPath());
+            System.out.println(files[i].getName());
         }
-        return null;
+        return currentPath;
     }
 }

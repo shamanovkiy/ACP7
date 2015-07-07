@@ -25,12 +25,12 @@ public class CommandCd implements ICommand{
     }
 
     private String changePath(String currentPath, String text){
-        String newPath = currentPath + "/" + text;
+        String newPath = currentPath + "\\" + text;
         if(find(currentPath, newPath)){
             return newPath;
         }
         if (text.equals("..")){
-            int index = currentPath.lastIndexOf("/");
+            int index = currentPath.lastIndexOf("\\");
             return currentPath.substring(0, index);
 
         }

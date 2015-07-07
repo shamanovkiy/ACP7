@@ -3,7 +3,7 @@ package ua.artcode.week2;
 import java.util.Scanner;
 
 public class MyConsole {
-    private String current = "/home/maks";
+    private String current = "C:\\Users\\Макс";
     private boolean working = true;
     private Scanner scan = new Scanner(System.in);
 
@@ -23,7 +23,10 @@ public class MyConsole {
         line = line.trim();
         String[] lines = line.split(" ");
         String command = lines[0];
-        String text = lines[1];
+        String text = "";
+        if(lines.length > 1) {
+            text = lines[1];
+        }
         if(command.equalsIgnoreCase("cd")){
             commandRun(new CommandCd(), text);
         }else if(command.equalsIgnoreCase("dir") || command.equalsIgnoreCase("ls")){
