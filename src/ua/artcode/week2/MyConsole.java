@@ -3,7 +3,7 @@ package ua.artcode.week2;
 import java.util.Scanner;
 
 public class MyConsole {
-    private String current = "C:\\Users\\Макс";
+    private String current = "/home/maks";
     private boolean working = true;
     private Scanner scan = new Scanner(System.in);
 
@@ -31,12 +31,17 @@ public class MyConsole {
             commandRun(new CommandCd(), text);
         }else if(command.equalsIgnoreCase("dir") || command.equalsIgnoreCase("ls")){
             commandRun(new CommandDir(), text);
+        }else if(command.equalsIgnoreCase("find")){
+            commandRun(new CommandFind(), text);
+        }else if(command.equalsIgnoreCase("help")){
+            commandRun(new CommandHelp(), text);
         }
     }
 
     private void commandRun(ICommand command, String text){
         current = (String) command.run(current, text);
     }
+
 
 
 
